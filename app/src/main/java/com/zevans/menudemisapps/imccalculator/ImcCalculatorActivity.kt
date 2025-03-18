@@ -1,5 +1,6 @@
 package com.zevans.menudemisapps.imccalculator
 
+import android.content.Intent
 import android.icu.text.DecimalFormat
 import android.os.Bundle
 import android.util.Log
@@ -34,6 +35,12 @@ class ImcCalculatorActivity : AppCompatActivity() {
     private lateinit var btnPlusage:FloatingActionButton
     private lateinit var tvAge:TextView
     private lateinit var btnCalculate:Button
+
+
+    companion object {
+        const val IMC_KEY =
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,15 +85,22 @@ class ImcCalculatorActivity : AppCompatActivity() {
 
         btnCalculate.setOnClickListener {
             calculateIMC()
-
+            val result = calculateIMC()
+            navigatetoResult(result)
         }
     }
 
-    private fun calculateIMC() {
+    private fun navigatetoResult(result: Double) {
+        val intent = Intent(this,ResultIMCActivity::class.java )
+        intent.putExtra("IMC_RESULTd", result)
+        startActivity(intent)
+    }
+
+    private fun calculateIMC() :Double {
         val df = DecimalFormat("#.##")
         val imc = currentWeight / (currentHeight.toDouble() /100 * currentHeight.toDouble() /100)
-        val result = df.format(imc).toDouble()
-        Log.i("tuto", "el imc es $result")
+        return df.format(imc).toDouble()
+
     }
 
     private fun setWeight() {
