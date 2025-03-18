@@ -12,12 +12,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.slider.RangeSlider
+import com.google.android.material.slider.Slider
 import com.zevans.menudemisapps.R
 
-
 class ImcCalculatorActivity : AppCompatActivity() {
-
 
     private var isMaleSelected:Boolean = true
     private var isFemaleSelected:Boolean = false
@@ -28,44 +26,39 @@ class ImcCalculatorActivity : AppCompatActivity() {
     private lateinit var viewMale:CardView
     private lateinit var viewFemale:CardView
     private lateinit var tvHeight:TextView
-    private lateinit var rsHeight:RangeSlider
+    private lateinit var rsHeight:Slider
     private lateinit var btnSubtractWeight:FloatingActionButton
     private lateinit var btnPlusWeight:FloatingActionButton
-    private lateinit var tvWeigth:TextView
-    private lateinit var btnSubtracage:FloatingActionButton
+    private lateinit var tvWeight:TextView
+    private lateinit var btnSubtractage:FloatingActionButton
     private lateinit var btnPlusage:FloatingActionButton
-    private lateinit var tvage:TextView
+    private lateinit var tvAge:TextView
     private lateinit var btnCalculate:Button
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_imc_calculator)
         initComponents()
-       initListeners()
+        initListeners()
         initUI()
-
     }
 
     private fun initListeners() {
-      viewMale.setOnClickListener {
-          setGenderColor()
-          changeGender()
-
-      }
+        viewMale.setOnClickListener {
+            changeGender(true)
+        }
 
         viewFemale.setOnClickListener {
-            setGenderColor()
-            changeGender()
+            changeGender(false)
         }
-        rsHeight.addOnChangeListener { _,value,_->
+
+        rsHeight.addOnChangeListener { _, value, _ ->
             val df = DecimalFormat("#.##")
             currentHeight = df.format(value).toInt()
-            tvHeight.text = "currentHeight cm"
-
+            tvHeight.text = "$currentHeight cm"
         }
+
         btnPlusWeight.setOnClickListener {
             currentWeight += 1
             setWeight()
@@ -78,80 +71,69 @@ class ImcCalculatorActivity : AppCompatActivity() {
             currentAge += 1
             setAge()
         }
-        btnSubtracage.setOnClickListener {
+        btnSubtractage.setOnClickListener {
             currentAge -= 1
             setAge()
-
         }
 
         btnCalculate.setOnClickListener {
-             calculateIMC()
-        }
+            calculateIMC()
 
+        }
     }
 
     private fun calculateIMC() {
-        val imc = currentWeight/ (currentHeight * currentHeight)
-        Log.i("zevans", " el imc es $imc")
+        val df = DecimalFormat("#.##")
+        val imc = currentWeight / (currentHeight.toDouble() /100 * currentHeight.toDouble() /100)
+        val result = df.format(imc).toDouble()
+        Log.i("tuto", "el imc es $result")
     }
 
-
-    private fun setWeight(){
-           tvWeigth.text = currentWeight.toString()
-
-       }
-
-    private fun setAge(){
-        tvage.text = currentAge.toString()
+    private fun setWeight() {
+        tvWeight.text = currentWeight.toString()
     }
 
-
-
-    private fun changeGender(){
-        isMaleSelected = !isMaleSelected
-        isFemaleSelected = !isFemaleSelected
+    private fun setAge() {
+        tvAge.text = currentAge.toString()
     }
 
+    private fun changeGender(selectedMale: Boolean) {
+        isMaleSelected = selectedMale
+        isFemaleSelected = !selectedMale
+        setGenderColor()
+    }
 
-
-    private fun setGenderColor(){
+    private fun setGenderColor() {
         viewMale.setCardBackgroundColor(getBackgroundColor(isMaleSelected))
         viewFemale.setCardBackgroundColor(getBackgroundColor(isFemaleSelected))
-
     }
 
-
-
-    private fun getBackgroundColor(isSelectedComponet:Boolean):Int{
-
-
-        val colorReference = if(isSelectedComponet){
+    private fun getBackgroundColor(isSelectedComponent:Boolean):Int {
+        val colorReference = if(isSelectedComponent) {
             R.color.background_component_selected
-        }else{
+        } else {
             R.color.background_component
         }
-
         return ContextCompat.getColor(this, colorReference)
-
     }
 
-
-    private fun initComponents(){
-          viewMale = findViewById(R.id.viewMale)
-          viewFemale = findViewById(R.id.viewFemale)
-          tvHeight = findViewById(R.id.tvHeight)
-          rsHeight = findViewById(R.id.rsHeight )
+    private fun initComponents() {
+        viewMale = findViewById(R.id.viewMale)
+        viewFemale = findViewById(R.id.viewFemale)
+        tvHeight = findViewById(R.id.tvHeight)
+        rsHeight = findViewById(R.id.rsHeight)
         btnSubtractWeight = findViewById(R.id.btnSubtractWeight)
         btnPlusWeight = findViewById(R.id.btnPlusWeight)
-        tvWeigth = findViewById(R.id.tvWeigth)
+        btnPlusage = findViewById(R.id.btnPlusAge)
+        btnSubtractage = findViewById(R.id.btnSubtractAge)
+        tvWeight = findViewById(R.id.tvWeight)
+        tvAge = findViewById(R.id.tvAge)
         btnCalculate = findViewById(R.id.btnCalculate)
-
     }
-    private fun initUI(){
 
+    private fun initUI() {
         setGenderColor()
         setWeight()
         setAge()
     }
-
 }
