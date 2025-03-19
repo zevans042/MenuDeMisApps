@@ -38,7 +38,7 @@ class ImcCalculatorActivity : AppCompatActivity() {
 
 
     companion object {
-        const val IMC_KEY =
+        const val IMC_KEY = "IMC_RESULT"
     }
 
 
@@ -92,7 +92,7 @@ class ImcCalculatorActivity : AppCompatActivity() {
 
     private fun navigatetoResult(result: Double) {
         val intent = Intent(this,ResultIMCActivity::class.java )
-        intent.putExtra("IMC_RESULTd", result)
+        intent.putExtra(IMC_KEY, result)
         startActivity(intent)
     }
 
