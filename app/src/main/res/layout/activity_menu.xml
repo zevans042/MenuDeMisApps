@@ -6,13 +6,15 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".MenuActivity"
-     android:layout_margin="55dp"
+    android:background="@color/background_app"
+    android:layout_margin="0dp"
 
     >
 
 
     <Button
         android:id="@+id/BtnSaludApp"
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SaludApp"
@@ -25,6 +27,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="IMC App"
+
+        />
+
+    <Button
+        android:id="@+id/BtnTODO"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TODO App"
 
         />
 

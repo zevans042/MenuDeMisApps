@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import com.zevans.menudemisapps.imccalculator.ImcCalculatorActivity
+import com.zevans.menudemisapps.todoapp.TodoActivity
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,18 +15,23 @@ class MenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
         val BtnSaludApp = findViewById<Button>(R.id.BtnSaludApp)
         val BtnImcApp = findViewById<Button>(R.id.BtnImcApp)
+        val BtnTODO = findViewById<Button>(R.id.BtnTODO)
 
-
-        BtnSaludApp.setOnClickListener {
-            navigateToSaludApp() }
-
+        BtnSaludApp.setOnClickListener { navigateToSaludApp() }
+        BtnTODO.setOnClickListener { navigateToTODO() }
         BtnImcApp.setOnClickListener { navigatetoImcApp() }
 
 
     }
 
+    private fun navigateToTODO() {
+        val intent = Intent(this, TodoActivity::class.java)
+        startActivity(intent)
+
+    }
+
     private fun navigatetoImcApp() {
-     val intent = Intent(this,ImcCalculatorActivity::class.java)
+     val intent = Intent(this, ImcCalculatorActivity::class.java)
         startActivity(intent)
 
 
