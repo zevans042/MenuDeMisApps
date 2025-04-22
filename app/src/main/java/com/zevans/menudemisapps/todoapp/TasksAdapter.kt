@@ -1,9 +1,10 @@
-package com.aristidevs.androidmaster.todoapp
+package com.zevans.androidmaster.todoapp
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.zevans.androidmaster.todoapp.Task
+import com.zevans.androidmaster.todoapp.TasksViewHolder
 import com.zevans.menudemisapps.R
 
 class TasksAdapter(var tasks: List<Task>, private val onTaskSelected: (Int) -> Unit) :

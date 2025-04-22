@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.zevans.androidmaster.todoapp.TaskCategory
 import com.zevans.menudemisapps.R
 
 class CategoriesViewsHolder(view: View) : RecyclerView.ViewHolder(view) {

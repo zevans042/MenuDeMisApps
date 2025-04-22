@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +15,20 @@
         android:theme="@style/Theme.MenuDeMisApps"
         tools:targetApi="31">
         <activity
-            android:name=".todoapp.TodoActivity"
+            android:name=".Superhero.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Superhero.SuperheroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HoroscopoClase.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HoroscopoClase.ZodiacActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Zodiac" />
+        <activity
+            android:name="com.zevans.androidmaster.todoapp.TodoActivity"
             android:exported="false" />
         <activity
             android:name=".imccalculator.ResultIMCActivity"
@@ -29,7 +44,6 @@
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
-
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

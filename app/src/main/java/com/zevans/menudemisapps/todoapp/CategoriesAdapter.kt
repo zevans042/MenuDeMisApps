@@ -3,6 +3,7 @@ package com.zevans.menudemisapps.todoapp
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.zevans.androidmaster.todoapp.TaskCategory
 import com.zevans.menudemisapps.R
 
 class CategoriesAdapter(private val categories:List<TaskCategory>)

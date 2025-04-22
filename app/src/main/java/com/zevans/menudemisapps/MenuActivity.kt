@@ -1,12 +1,14 @@
 package com.zevans.menudemisapps
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
+import com.zevans.androidmaster.todoapp.TodoActivity
+import com.zevans.menudemisapps.HoroscopoClase.ZodiacActivity
 import com.zevans.menudemisapps.imccalculator.ImcCalculatorActivity
-import com.zevans.menudemisapps.todoapp.TodoActivity
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,9 +19,13 @@ class MenuActivity : AppCompatActivity() {
         val BtnImcApp = findViewById<Button>(R.id.BtnImcApp)
         val BtnTODO = findViewById<Button>(R.id.BtnTODO)
 
+
         BtnSaludApp.setOnClickListener { navigateToSaludApp() }
         BtnTODO.setOnClickListener { navigateToTODO() }
         BtnImcApp.setOnClickListener { navigatetoImcApp() }
+
+
+
 
 
     }
@@ -43,5 +49,10 @@ class MenuActivity : AppCompatActivity() {
         startActivity(intent)
 
     }
+
+
+
+
+
 
 }

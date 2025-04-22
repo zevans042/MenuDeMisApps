@@ -17,26 +17,32 @@
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SaludApp"
+        android:text="SaludApp"/>
 
-        />
+
 
 
     <Button
         android:id="@+id/BtnImcApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="IMC App"
+        android:text="IMC App"/>
 
-        />
+
 
     <Button
         android:id="@+id/BtnTODO"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TODO App"
+        android:text="TODO App"/>
 
-        />
+
+
+
+
+
+
+
 
 
 </LinearLayout>
